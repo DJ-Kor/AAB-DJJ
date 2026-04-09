@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Project portfolio">
-  <title>Projects — Portfolio</title>
+  <meta name="description" content="Guestbook — leave a message">
+  <title>Guestbook — Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,11 +37,34 @@
   <!-- Main Content -->
   <main class="main">
     <div class="page-header">
-      <h1>Projects</h1>
-      <p>Things I've built and contributed to</p>
+      <h1>Guestbook</h1>
+      <p>방명록을 남겨주세요 — GitHub 계정으로 로그인하면 댓글을 작성할 수 있습니다</p>
     </div>
-    <div id="projects-content">
-      <!-- Rendered by js/main.js -->
+    <div class="giscus-container">
+      <!--
+        ============================================================
+        giscus 설정 방법:
+        1. GitHub repo Settings → General → Features → Discussions 체크
+        2. https://github.com/apps/giscus 에서 giscus 앱 설치
+        3. https://giscus.app 에서 repo 입력 후 설정값 생성
+        4. 아래 data-repo-id, data-category-id 값을 교체
+        ============================================================
+      -->
+      <script src="https://giscus.app/client.js"
+              data-repo="DJ-Kor/AAB-DJJ"
+              data-repo-id="YOUR_REPO_ID"
+              data-category="General"
+              data-category-id="YOUR_CATEGORY_ID"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="top"
+              data-theme="preferred_color_scheme"
+              data-lang="ko"
+              crossorigin="anonymous"
+              async>
+      </script>
     </div>
   </main>
 
