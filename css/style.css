@@ -470,6 +470,11 @@ a:hover {
   color: var(--color-border);
 }
 
+/* --- Guestbook --- */
+.giscus-container {
+  min-height: 300px;
+}
+
 /* --- Footer --- */
 .footer {
   border-top: 1px solid var(--color-border);
