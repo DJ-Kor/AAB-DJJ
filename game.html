@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Career and education timeline">
-  <title>Timeline — Portfolio</title>
+  <meta name="description" content="Mini dodge game with leaderboard">
+  <title>Game — Portfolio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,12 +38,42 @@
   <!-- Main Content -->
   <main class="main">
     <div class="page-header">
-      <h1>Timeline</h1>
-      <p>Education and career journey</p>
+      <h1>Dodge</h1>
+      <p>떨어지는 블록을 피하세요. ← → 키 또는 화면 좌/우 터치로 이동.</p>
     </div>
-    <div id="timeline-content">
-      <!-- Rendered by js/main.js -->
+
+    <div class="game-container">
+      <canvas id="game-canvas" width="400" height="600"></canvas>
+      <div id="game-hud">
+        <span>Score</span>
+        <span id="score">0</span>
+      </div>
+      <div id="game-overlay">
+        <div id="game-start" class="game-panel">
+          <h2>Dodge!</h2>
+          <p>Space 또는 Start 버튼으로 시작</p>
+          <button id="start-btn" class="game-btn">Start</button>
+        </div>
+        <div id="game-over" class="game-panel" hidden>
+          <h2>Game Over</h2>
+          <p class="final-score-label">Your Score</p>
+          <p class="final-score"><span id="final-score">0</span></p>
+          <input type="text" id="player-name" placeholder="이름 (최대 10자)" maxlength="10">
+          <div class="game-btn-row">
+            <button id="submit-score" class="game-btn">Submit</button>
+            <button id="restart-btn" class="game-btn secondary">Play Again</button>
+          </div>
+          <p id="submit-status" class="submit-status"></p>
+        </div>
+      </div>
     </div>
+
+    <section class="leaderboard">
+      <h2>Leaderboard</h2>
+      <ol id="leaderboard-list">
+        <li class="leaderboard-empty">Loading...</li>
+      </ol>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -53,5 +83,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script type="module" src="js/game.js"></script>
 </body>
 </html>
