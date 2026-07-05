@@ -177,22 +177,55 @@ a:hover {
   color: var(--color-accent);
 }
 
-/* Mobile menu button */
-.nav-menu-btn {
+/* Bottom tab navigation (mobile only, injected by main.js) */
+.bottom-nav {
   display: none;
-  background: none;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  color: var(--color-text);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--color-border);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
 }
 
-.nav-menu-btn svg {
-  width: 24px;
-  height: 24px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
+.bottom-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-nav li {
+  flex: 1;
+}
+
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 0 4px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.bottom-nav a svg {
+  width: 21px;
+  height: 21px;
+}
+
+.bottom-nav a.active {
+  color: var(--color-accent);
+}
+
+/* Device-specific helper text */
+.mobile-only {
+  display: none;
 }
 
 /* --- Main Content --- */
@@ -715,6 +748,116 @@ a:hover {
   font-size: 0.875rem;
 }
 
+/* --- Skills (About page) --- */
+.skills {
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.skills h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 32px 0 20px;
+  text-align: center;
+}
+
+.skill-group {
+  margin-bottom: 20px;
+}
+
+.skill-group h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* --- Sample badge (placeholder projects) --- */
+.sample-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #b45309;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+[data-theme="dark"] .sample-badge {
+  background: #451a03;
+  color: #fbbf24;
+}
+
+/* --- Easter egg: party mode --- */
+body.party .nav-logo {
+  background: linear-gradient(90deg, #ef4444, #f59e0b, #22c55e, #06b6d4, #6366f1, #d946ef);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: party-slide 1.5s linear infinite;
+}
+
+@keyframes party-slide {
+  to { background-position: 300% 0; }
+}
+
+.confetti {
+  position: fixed;
+  top: -6vh;
+  z-index: 9999;
+  pointer-events: none;
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(115vh) rotate(720deg);
+  }
+}
+
+.egg-toast {
+  position: fixed;
+  top: calc(var(--nav-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px var(--color-card-shadow);
+  animation: toast-in 0.3s ease;
+  pointer-events: none;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* --- Footer --- */
 .footer {
   border-top: 1px solid var(--color-border);
@@ -739,28 +882,22 @@ a:hover {
 @media (max-width: 639px) {
   .nav-links {
     display: none;
-    position: absolute;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-    flex-direction: column;
-    padding: 16px 24px;
-    gap: 4px;
   }
 
-  .nav-links.open {
-    display: flex;
+  .bottom-nav {
+    display: block;
   }
 
-  .nav-links a {
-    padding: 10px 14px;
-    width: 100%;
+  body {
+    padding-bottom: 76px;
   }
 
-  .nav-menu-btn {
-    display: flex;
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: inline;
   }
 
   .hero h1 {

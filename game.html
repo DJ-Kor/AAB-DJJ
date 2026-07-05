@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mini dodge game with leaderboard">
-  <title>Game — Portfolio</title>
+  <title>Game — Dongjun Jang</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,15 +23,8 @@
         <li><a href="projects.html">Projects</a></li>
         <li><a href="guestbook.html">Guestbook</a></li>
         <li><a href="game.html">Game</a></li>
-        <li><button class="theme-toggle" aria-label="Toggle theme">🌙</button></li>
       </ul>
-      <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24">
-          <line x1="4" y1="7" x2="20" y2="7"/>
-          <line x1="4" y1="12" x2="20" y2="12"/>
-          <line x1="4" y1="17" x2="20" y2="17"/>
-        </svg>
-      </button>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
 
@@ -39,7 +32,10 @@
   <main class="main">
     <div class="page-header">
       <h1>Dodge</h1>
-      <p>떨어지는 블록을 피하세요. ← → 키 또는 화면 좌/우 터치로 이동.</p>
+      <p>떨어지는 블록을 피하세요.
+        <span class="desktop-only">← → 방향키 또는 A/D 키로 이동합니다.</span>
+        <span class="mobile-only">화면 왼쪽/오른쪽을 터치해서 이동합니다.</span>
+      </p>
     </div>
 
     <div class="game-container">
@@ -51,7 +47,10 @@
       <div id="game-overlay">
         <div id="game-start" class="game-panel">
           <h2>Dodge!</h2>
-          <p>Space 또는 Start 버튼으로 시작</p>
+          <p>
+            <span class="desktop-only">Space 또는 Start 버튼으로 시작</span>
+            <span class="mobile-only">Start 버튼을 눌러 시작</span>
+          </p>
           <button id="start-btn" class="game-btn">Start</button>
         </div>
         <div id="game-over" class="game-panel" hidden>
